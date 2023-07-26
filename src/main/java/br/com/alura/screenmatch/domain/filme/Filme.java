@@ -7,13 +7,14 @@ import jakarta.persistence.*;
 public class Filme {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //indicar que os valores dos identificadores das entidades serão gerados automaticamente pelo banco de dados.
     private long id;
     private String nome;
     private Integer duracaoemMinutos;
     private Integer anoLancamento;
     private String genero;
 
-    public Filme(DadosCadastroFilme dados){
+    public Filme(DadosCadastroFilme dados) {
         this.nome = dados.nome();
         this.duracaoemMinutos = dados.duracao();
         this.anoLancamento = dados.ano();
