@@ -5,24 +5,35 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "filmes")
 public class Filme {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    //indicar que os valores dos identificadores das entidades serão gerados automaticamente pelo banco de dados.
-    private long id;
+    private Long id;
     private String nome;
-    private Integer duracaoemMinutos;
+    private Integer duracaoEmMinutos;
     private Integer anoLancamento;
     private String genero;
 
     public Filme(DadosCadastroFilme dados) {
         this.nome = dados.nome();
-        this.duracaoemMinutos = dados.duracao();
+        this.duracaoEmMinutos = dados.duracao();
         this.anoLancamento = dados.ano();
         this.genero = dados.genero();
-
     }
 
-    public long getId() {
+    public Filme(){}
+
+    @Override
+    public String toString() {
+        return "Filme{" +
+                "nome='" + nome + '\'' +
+                ", duracaoEmMinutos=" + duracaoEmMinutos +
+                ", anoLancamento=" + anoLancamento +
+                ", genero='" + genero + '\'' +
+                '}';
+    }
+
+    public Long getId() {
         return id;
     }
 
@@ -30,8 +41,8 @@ public class Filme {
         return nome;
     }
 
-    public Integer getDuracaoemMinutos() {
-        return duracaoemMinutos;
+    public Integer getDuracaoEmMinutos() {
+        return duracaoEmMinutos;
     }
 
     public Integer getAnoLancamento() {
@@ -40,15 +51,5 @@ public class Filme {
 
     public String getGenero() {
         return genero;
-    }
-
-    @Override
-    public String toString() {
-        return "Filme{" +
-                "nome='" + nome + '\'' +
-                ", duracaoemMinutos=" + duracaoemMinutos +
-                ", anoLancamento=" + anoLancamento +
-                ", genero='" + genero + '\'' +
-                '}';
     }
 }
